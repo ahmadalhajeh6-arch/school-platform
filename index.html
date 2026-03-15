@@ -1,3 +1,34 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>مدرسة الشهيد عايد الدعسان الثانوية للبنين</title>
+<style>
+body{font-family:Arial;direction:rtl;background:#eef2f7;margin:0;}
+header{background:#1e3a5f;color:white;padding:20px;text-align:center;}
+nav{background:#2c5282;padding:10px;text-align:center;}
+nav a{color:white;margin:10px;text-decoration:none;font-weight:bold;}
+.container{padding:40px;}
+.card{background:white;padding:20px;margin:20px;border-radius:10px;box-shadow:0 3px 10px rgba(0,0,0,0.1);}
+button{background:#2c5282;color:white;border:none;padding:10px 15px;border-radius:6px;cursor:pointer;}
+input{padding:10px;width:70%;margin:10px;}
+#ai-response{margin-top:20px;font-weight:bold;}
+</style>
+</head>
+<body>
+<header>
+<h1>مدرسة الشهيد عايد الدعسان الثانوية للبنين</h1>
+<p>المنصة الرقمية للمدرسة</p>
+</header>
+
+<nav>
+<a href="#select-class">اختر الفصل</a>
+<a href="#ai">مساعد المدرسة</a>
+</nav>
+
+<div class="container">
+
+<!-- اختيار الفصل -->
 <div class="card" id="select-class">
 <h2>اختر الفصل</h2>
 <select id="class-selector" onchange="updateClass()">
@@ -11,7 +42,9 @@
   <option value="10">الصف العاشر</option>
 </select>
 </div>
-<!-- الصف الرابع -->
+
+<!-- أقسام الطلاب والمعلمين والجداول -->
+<!-- مثال الصف الرابع -->
 <div class="card" id="students-4" style="display:none;">
 <h2>الطلاب المتفوقون - الصف الرابع</h2>
 <p>سيتم إضافة أسماء الطلاب لاحقًا</p>
@@ -25,7 +58,7 @@
 <p>سيتم إضافة الجدول لاحقًا</p>
 </div>
 
-<!-- الصف الخامس -->
+<!-- مثال الصف الخامس -->
 <div class="card" id="students-5" style="display:none;">
 <h2>الطلاب المتفوقون - الصف الخامس</h2>
 <p>سيتم إضافة أسماء الطلاب لاحقًا</p>
@@ -39,37 +72,44 @@
 <p>سيتم إضافة الجدول لاحقًا</p>
 </div>
 
-<!-- الصف السادس -->
-<div class="card" id="students-6" style="display:none;">
-<h2>الطلاب المتفوقون - الصف السادس</h2>
-<p>سيتم إضافة أسماء الطلاب لاحقًا</p>
+<!-- أضف باقي الصفوف بنفس الأسلوب حتى الصف 10 -->
+
+<!-- المساعد الذكي -->
+<div class="card" id="ai">
+<h2>اسأل مساعد المدرسة 🤖</h2>
+<input id="question" placeholder="اكتب سؤالك هنا">
+<button onclick="askAI()">اسأل</button>
+<div id="ai-response"></div>
 </div>
-<div class="card" id="teachers-6" style="display:none;">
-<h2>كادر الصف السادس</h2>
-<p>سيتم إضافة المعلمين لاحقًا</p>
+
 </div>
-<div class="card" id="classes-6" style="display:none;">
-<h2>جدول الصف السادس</h2>
-<p>سيتم إضافة الجدول لاحقًا</p>
-</div>
+
+<footer>
+<p>© مدرسة الشهيد عايد الدعسان الثانوية للبنين</p>
+</footer>
+
+<script>
 function updateClass(){
   let selected = document.getElementById("class-selector").value;
-  
-  // اخفاء كل الطلاب والمعلمين والجداول
   let classes = ["4","5","6","7","8","9","10"];
   classes.forEach(c=>{
     document.getElementById("students-"+c).style.display="none";
     document.getElementById("teachers-"+c).style.display="none";
     document.getElementById("classes-"+c).style.display="none";
   });
-
-  // اظهار المختار
   if(selected){
     document.getElementById("students-"+selected).style.display="block";
     document.getElementById("teachers-"+selected).style.display="block";
-    document.getElementById("classes-"+selected).style.display="block";}}
+    document.getElementById("classes-"+selected).style.display="block";
+  }
+}
+
 function askAI(){
   let q = document.getElementById("question").value.toLowerCase();
   let response = "سيتم ربط الذكاء الاصطناعي لاحقًا للإجابة عن: " + q;
   document.getElementById("ai-response").innerText = response;
 }
+</script>
+
+</body>
+</html>
