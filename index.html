@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مدرسة الشهيد عايد الدعسان الثانوية للبنين</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+body { direction: rtl; font-family: 'Arial', sans-serif; background-color: #f0f4f8; }
+header { background-color: #1e3a5f; color: white; padding: 20px; text-align: center; }
+footer { background-color: #1e3a5f; color: white; padding: 10px; text-align: center; }
+.card { background-color: white; padding: 20px; margin: 20px 0; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+.nav-link { cursor:pointer; font-weight:bold; }
+.nav-link:hover { color:#fbbf24; }
+</style>
+</head>
+<body>
+
+<header>
+<h1 class="text-3xl font-bold">مدرسة الشهيد عايد الدعسان الثانوية للبنين</h1>
+<p class="mt-1">المنصة الرقمية المتكاملة للمدرسة</p>
+</header>
+
+<nav class="bg-blue-900 p-4 sticky top-0 z-50 flex justify-center flex-wrap">
+<span class="text-white mx-3 nav-link" onclick="showSection('school')">المدرسة</span>
+<span class="text-white mx-3 nav-link" onclick="showSection('admin')">المدير والكادر</span>
+<span class="text-white mx-3 nav-link" onclick="showSection('library')">المكتبة</span>
+<span class="text-white mx-3 nav-link" onclick="showSection('theater')">المسرح والفعاليات</span>
+<span class="text-white mx-3 nav-link" onclick="showSection('feedback')">بلاغات التحسين</span>
+<span class="text-white mx-3 nav-link" onclick="showSection('select-class')">الصفوف</span>
+<span class="text-white mx-3 nav-link" onclick="showSection('ai')">مساعد المدرسة</span>
+</nav>
+
+<div class="container mx-auto p-6">
+
+<!-- المدرسة -->
+<div class="card" id="school">
+<h2 class="text-2xl font-bold text-blue-900">عن المدرسة</h2>
+<p>ضع هنا وصف المدرسة، مميزاتها، إنجازاتها، تاريخها، وأي معلومات مهمة.</p>
+<p><strong>رقم التواصل:</strong> 12345678</p>
+<ul class="list-disc ml-5 mt-2">
+<li>معلمين متميزين</li>
+<li>مختبرات حديثة</li>
+<li>بيئة تعليمية محفزة</li>
+<li>أنشطة وفعاليات مستمرة</li>
+</ul>
+</div>
+
+<!-- المدير والكادر -->
+<div class="card" id="admin">
+<h2 class="text-2xl font-bold text-blue-900">المدير والكادر الإداري</h2>
+<p><strong>المدير:</strong> أ. [ضع الاسم هنا]</p>
+<p><strong>نائب المدير:</strong> أ. [ضع الاسم هنا]</p>
+<p><strong>السكرتارية:</strong> أ. [ضع الاسم هنا]</p>
+<ul class="list-disc ml-5 mt-2">
+<li>أ. [الاسم]</li>
+<li>أ. [الاسم]</li>
+<li>أ. [الاسم]</li>
+</ul>
+</div>
+
+<!-- المكتبة -->
+<div class="card" id="library">
+<h2 class="text-2xl font-bold text-blue-900">المكتبة والكتب</h2>
+<p>ضع هنا قائمة الكتب المتوفرة في المكتبة مع صورها إذا أردت.</p>
+<ul class="list-disc ml-5 mt-2">
+<li>كتاب 1</li>
+<li>كتاب 2</li>
+<li>كتاب 3</li>
+</ul>
+</div>
+
+<!-- المسرح والفعاليات -->
+<div class="card" id="theater">
+<h2 class="text-2xl font-bold text-blue-900">المسرح والفعاليات</h2>
+<p>ضع هنا جدول الفعاليات والمسرحيات، الأنشطة، عروض الطلاب، وأي نشاط مستقبلي.</p>
+</div>
+
+<!-- بلاغات التحسين -->
+<div class="card" id="feedback">
+<h2 class="text-2xl font-bold text-blue-900">نموذج بلاغات التحسين</h2>
+<textarea id="feedback-text" placeholder="اكتب بلاغك هنا" class="border border-gray-300 rounded p-2 w-full"></textarea>
+<br>
+<button class="bg-blue-900 text-white px-4 py-2 rounded mt-2" onclick="sendFeedback()">إرسال البلاغ</button>
+<p id="feedback-response" class="mt-2 font-bold text-green-600"></p>
+</div>
+
+<!-- اختيار الصفوف -->
+<div class="card" id="select-class">
+<h2 class="text-2xl font-bold text-blue-900">اختر الفصل</h2>
+<select id="class-selector" onchange="updateClass()" class="border border-gray-300 rounded p-2 w-full">
+  <option value="">-- اختر الصف --</option>
+  <option value="4">الصف الرابع</option>
+  <option value="5">الصف الخامس</option>
+  <option value="6">الصف السادس</option>
+  <option value="7">الصف السابع</option>
+  <option value="8">الصف الثامن</option>
+  <option value="9">الصف التاسع</option>
+  <option value="10">الصف العاشر</option>
+</select>
+</div>
+
+<!-- الطلاب والمعلمين والجداول لكل الصفوف -->
+<div class="card" id="students-4" style="display:none;"><h2 class="text-xl font-bold">الطلاب المتفوقون - الصف الرابع</h2><p>أضف أسماء الطلاب هنا</p></div>
+<div class="card" id="teachers-4" style="display:none;"><h2 class="text-xl font-bold">كادر الصف الرابع</h2><p>أضف المعلمين هنا</p></div>
+<div class="card" id="classes-4" style="display:none;"><h2 class="text-xl font-bold">جدول الصف الرابع</h2><p>أضف الجدول هنا</p></div>
+
+<div class="card" id="students-5" style="display:none;"><h2 class="text-xl font-bold">الطلاب المتفوقون - الصف الخامس</h2><p>أضف أسماء الطلاب هنا</p></div>
+<div class="card" id="teachers-5" style="display:none;"><h2 class="text-xl font-bold">كادر الصف الخامس</h2><p>أضف المعلمين هنا</p></div>
+<div class="card" id="classes-5" style="display:none;"><h2 class="text-xl font-bold">جدول الصف الخامس</h2><p>أضف الجدول هنا</p></div>
+
+<div class="card" id="students-6" style="display:none;"><h2 class="text-xl font-bold">الطلاب المتفوقون - الصف السادس</h2><p>أضف أسماء الطلاب هنا</p></div>
+<div class="card" id="teachers-6" style="display:none;"><h2 class="text-xl font-bold">كادر الصف السادس</h2><p>أضف المعلمين هنا</p></div>
+<div class="card" id="classes-6" style="display:none;"><h2 class="text-xl font-bold">جدول الصف السادس</h2><p>أضف الجدول هنا</p></div>
+
+<div class="card" id="students-7" style="display:none;"><h2 class="text-xl font-bold">الطلاب المتفوقون - الصف السابع</h2><p>أضف أسماء الطلاب هنا</p></div>
+<div class="card" id="teachers-7" style="display:none;"><h2 class="text-xl font-bold">كادر الصف السابع</h2><p>أضف المعلمين هنا</p></div>
+<div class="card" id="classes-7" style="display:none;"><h2 class="text-xl font-bold">جدول الصف السابع</h2><p>أضف الجدول هنا</p></div>
+
+<div class="card" id="students-8" style="display:none;"><h2 class="text-xl font-bold">الطلاب المتفوقون - الصف الثامن</h2><p>أضف أسماء الطلاب هنا</p></div>
+<div class="card" id="teachers-8" style="display:none;"><h2 class="text-xl font-bold">كادر الصف الثامن</h2><p>أضف المعلمين هنا</p></div>
+<div class="card" id="classes-8" style="display:none;"><h2 class="text-xl font-bold">جدول الصف الثامن</h2><p>أضف الجدول هنا</p></div>
+
+<div class="card" id="students-9" style="display:none;"><h2 class="text-xl font-bold">الطلاب المتفوقون - الصف التاسع</h2><p>أضف أسماء الطلاب هنا</p></div>
+<div class="card" id="teachers-9" style="display:none;"><h2 class="text-xl font-bold">كادر الصف التاسع</h2><p>أضف المعلمين هنا</p></div>
+<div class="card" id="classes-9" style="display:none;"><h2 class="text-xl font-bold">جدول الصف التاسع</h2><p>أضف الجدول هنا</p></div>
+
+<div class="card" id="students-10" style="display:none;"><h2 class="text-xl font-bold">الطلاب المتفوقون - الصف العاشر</h2><p>أضف أسماء الطلاب هنا</p></div>
+<div class="card" id="teachers-10" style="display:none;"><h2 class="text-xl font-bold">كادر الصف العاشر</h2><p>أضف المعلمين هنا</p></div>
+<div class="card" id="classes-10" style="display:none;"><h2 class="text-xl font-bold">جدول الصف العاشر</h2><p>أضف الجدول هنا</p></div>
+
+<!-- مساعد الذكاء الاصطناعي -->
+<div class="card" id="ai">
+<h2 class="text-2xl font-bold text-blue-900">اسأل مساعد المدرسة 🤖</h2>
+<input id="question" placeholder="اكتب سؤالك هنا" class="border border-gray-300 rounded p-2 w-full mt-2">
+<button class="bg-blue-900 text-white px-4 py-2 rounded mt-2" onclick="askAI()">اسأل</button>
+<div id="ai-response" class="mt-2 font-bold text-blue-700"></div>
+</div>
+
+</div>
+
+<footer>
+<p>© مدرسة الشهيد عايد الدعسان الثانوية للبنين</p>
+<p>المطورون: أحمد الحجة، عصام شادي، عمر وليد، محمد جرادات، عبدالرحمن جزر</p>
+</footer>
+
+<script>
+// إدارة الأقسام
+function showSection(sectionId){
+  let sections = ["school","admin","library","theater","feedback","select-class","ai"];
+  sections.forEach(sec=>document.getElementById(sec).style.display="none");
+  document.getElementById(sectionId).style.display="block";
+}
+window.onload = function(){ showSection("school"); }
+
+// إدارة الصفوف
+function updateClass(){
+  let selected = document.getElementById("class-selector").value;
+  let classes = ["4","5","6","7","8","9","10"];
+  classes.forEach(c=>{
+    ["students-"+c,"teachers-"+c,"classes-"+c].forEach(id=>document.getElementById(id).style.display="none");
+  });
+  if(selected){
+    ["students-"+selected,"teachers-"+selected,"classes-"+selected].forEach(id=>document.getElementById(id).style.display="block");
+  }
+}
+
+// المساعد الذكي
+async function askAI(){
+  let question = document.getElementById("question").value;
+  if(!question.trim()) return;
+  document.getElementById("ai-response").innerText = "جارٍ الحصول على الإجابة...";
+  try {
+    const response = await fetch("/ask", {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({question})
+    });
+    const data = await response.json();
+    document.getElementById("ai-response").innerText = data.answer;
+  } catch(err){
+    document.getElementById("ai-response").innerText = "حدث خطأ في الاتصال بالمساعد.";
+  }
+}
+
+// بلاغات التحسين
+function sendFeedback(){
+  let text = document.getElementById("feedback-text").value;
+  if(text.trim()!=""){
+    document.getElementById("feedback-response").innerText="تم إرسال البلاغ بنجاح!";
+    document.getElementById("feedback-text").value="";
+  } else{
+    document.getElementById("feedback-response").innerText="يرجى كتابة البلاغ أولاً.";
+  }
+}
+</script>
+
+</body>
+</html>
