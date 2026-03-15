@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>مدرسة الشهيد عايد الدعسان الثانوية للبنين</title>
+<style>
+body{font-family:Arial, sans-serif;direction:rtl;background:#eef2f7;margin:0;padding:0;}
+header{background:#1e3a5f;color:white;padding:20px;text-align:center;}
+nav{background:#2c5282;padding:10px;text-align:center;position:sticky;top:0;z-index:1000;}
+nav a{color:white;margin:10px;text-decoration:none;font-weight:bold;cursor:pointer;}
+.container{padding:30px;}
+.card{background:white;padding:20px;margin:20px 0;border-radius:10px;box-shadow:0 3px 10px rgba(0,0,0,0.1);}
+button{background:#2c5282;color:white;border:none;padding:10px 15px;border-radius:6px;cursor:pointer;}
+input,textarea,select{padding:10px;width:70%;margin:10px 0;}
+#ai-response{margin-top:20px;font-weight:bold;color:#2c5282;}
+table{width:100%;border-collapse:collapse;text-align:center;}
+table th, table td{border:1px solid #ccc;padding:10px;}
+h2{color:#1e3a5f;}
+</style>
+</head>
+<body>
+
+<header>
+<h1>مدرسة الشهيد عايد الدعسان الثانوية للبنين</h1>
+<p>المنصة الرقمية للمدرسة</p>
+</header>
+
+<nav>
+<a onclick="showSection('school')">المدرسة</a>
+<a onclick="showSection('admin')">المدير والكادر</a>
+<a onclick="showSection('library')">المكتبة</a>
+<a onclick="showSection('theater')">المسرح والفعاليات</a>
+<a onclick="showSection('feedback')">بلاغات التحسين</a>
+<a onclick="showSection('select-class')">الصفوف</a>
+<a onclick="showSection('ai')">مساعد المدرسة</a>
+</nav>
+
+<div class="container">
+
+<!-- المدرسة -->
+<div class="card" id="school">
+<h2>عن المدرسة</h2>
+<p>ضع هنا وصف المدرسة، مميزاتها، إنجازاتها، تاريخها، وأي معلومات مهمة.</p>
+<p><strong>رقم التواصل:</strong> 12345678</p>
+<ul>
+<li>معلمين متميزين</li>
+<li>مختبرات حديثة</li>
+<li>بيئة تعليمية محفزة</li>
+<li>أنشطة وفعاليات مستمرة</li>
+</ul>
+</div>
+
+<!-- المدير والكادر الإداري -->
+<div class="card" id="admin">
+<h2>المدير والكادر الإداري</h2>
+<p><strong>المدير:</strong> أ. [ضع الاسم هنا]</p>
+<p><strong>نائب المدير:</strong> أ. [ضع الاسم هنا]</p>
+<p><strong>السكرتارية:</strong> أ. [ضع الاسم هنا]</p>
+<ul>
+<li>أ. [الاسم]</li>
+<li>أ. [الاسم]</li>
+<li>أ. [الاسم]</li>
+</ul>
+</div>
+
+<!-- المكتبة -->
+<div class="card" id="library">
+<h2>المكتبة والكتب</h2>
+<p>ضع هنا قائمة الكتب المتوفرة في المكتبة مع صورها إذا أردت.</p>
+<ul>
+<li>كتاب 1</li>
+<li>كتاب 2</li>
+<li>كتاب 3</li>
+</ul>
+</div>
+
+<!-- المسرح والفعاليات -->
+<div class="card" id="theater">
+<h2>المسرح والفعاليات</h2>
+<p>ضع هنا جدول الفعاليات والمسرحيات، الأنشطة، عروض الطلاب، وأي نشاط مستقبلي.</p>
+</div>
+
+<!-- بلاغات التحسين -->
+<div class="card" id="feedback">
+<h2>نموذج بلاغات التحسين</h2>
+<textarea id="feedback-text" placeholder="اكتب بلاغك هنا"></textarea>
+<br>
+<button onclick="sendFeedback()">إرسال البلاغ</button>
+<p id="feedback-response" style="color:green;font-weight:bold;"></p>
+</div>
+
+<!-- الصفوف -->
+<div class="card" id="select-class">
+<h2>اختر الفصل</h2>
+<select id="class-selector" onchange="updateClass()">
+  <option value="">-- اختر الصف --</option>
+  <option value="4">الصف الرابع</option>
+  <option value="5">الصف الخامس</option>
+  <option value="6">الصف السادس</option>
+  <option value="7">الصف السابع</option>
+  <option value="8">الصف الثامن</option>
+  <option value="9">الصف التاسع</option>
+  <option value="10">الصف العاشر</option>
+</select>
+</div>
+
+<!-- الطلاب والمعلمين والجداول لكل الصفوف -->
+<div class="card" id="students-4" style="display:none;"><h2>الطلاب المتفوقون - الصف الرابع</h2><p>أضف أسماء الطلاب هنا</p></div>
+<div class="card" id="teachers-4" style="display:none;"><h2>كادر الصف الرابع</h2><p>أضف المعلمين هنا</p></div>
+<div class="card" id="classes-4" style="display:none;"><h2>جدول الصف الرابع</h2><p>أضف الجدول هنا</p></div>
+
+<div class="card" id="students-5" style="display:none;"><h2>الطلاب المتفوقون - الصف الخامس</h2><p>أضف أسماء الطلاب هنا</p></div>
+<div class="card" id="teachers-5" style="display:none;"><h2>كادر الصف الخامس</h2><p>أضف المعلمين هنا</p></div>
+<div class="card" id="classes-5" style="display:none;"><h2>جدول الصف الخامس</h2><p>أضف الجدول هنا</p></div>
+
+<div class="card" id="students-6" style="display:none;"><h2>الطلاب المتفوقون - الصف السادس</h2><p>أضف أسماء الطلاب هنا</p></div>
+<div class="card" id="teachers-6" style="display:none;"><h2>كادر الصف السادس</h2><p>أضف المعلمين هنا</p></div>
+<div class="card" id="classes-6" style="display:none;"><h2>جدول الصف السادس</h2><p>أضف الجدول هنا</p></div>
+
+<div class="card" id="students-7" style="display:none;"><h2>الطلاب المتفوقون - الصف السابع</h2><p>أضف أسماء الطلاب هنا</p></div>
+<div class="card" id="teachers-7" style="display:none;"><h2>كادر الصف السابع</h2><p>أضف المعلمين هنا</p></div>
+<div class="card" id="classes-7" style="display:none;"><h2>جدول الصف السابع</h2><p>أضف الجدول هنا</p></div>
+
+<div class="card" id="students-8" style="display:none;"><h2>الطلاب المتفوقون - الصف الثامن</h2><p>أضف أسماء الطلاب هنا</p></div>
+<div class="card" id="teachers-8" style="display:none;"><h2>كادر الصف الثامن</h2><p>أضف المعلمين هنا</p></div>
+<div class="card" id="classes-8" style="display:none;"><h2>جدول الصف الثامن</h2><p>أضف الجدول هنا</p></div>
+
+<div class="card" id="students-9" style="display:none;"><h2>الطلاب المتفوقون - الصف التاسع</h2><p>أضف أسماء الطلاب هنا</p></div>
+<div class="card" id="teachers-9" style="display:none;"><h2>كادر الصف التاسع</h2><p>أضف المعلمين هنا</p></div>
+<div class="card" id="classes-9" style="display:none;"><h2>جدول الصف التاسع</h2><p>أضف الجدول هنا</p></div>
+
+<div class="card" id="students-10" style="display:none;"><h2>الطلاب المتفوقون - الصف العاشر</h2><p>أضف أسماء الطلاب هنا</p></div>
+<div class="card" id="teachers-10" style="display:none;"><h2>كادر الصف العاشر</h2><p>أضف المعلمين هنا</p></div>
+<div class="card" id="classes-10" style="display:none;"><h2>جدول الصف العاشر</h2><p>أضف الجدول هنا</p></div>
+
+<!-- مساعد المدرسة -->
+<div class="card" id="ai">
+<h2>اسأل مساعد المدرسة 🤖</h2>
+<input id="question" placeholder="اكتب سؤالك هنا">
+<button onclick="askAI()">اسأل</button>
+<div id="ai-response"></div>
+</div>
+
+</div>
+
+<footer>
+<p style="text-align:center;padding:10px;background:#1e3a5f;color:white;">© مدرسة الشهيد عايد الدعسان الثانوية للبنين</p>
+</footer>
+
+<script>
+function showSection(sectionId){
+  let sections = ["school","admin","library","theater","feedback","select-class","ai"];
+  sections.forEach(sec=>{
+    document.getElementById(sec).style.display = "none";
+  });
+  document.getElementById(sectionId).style.display = "block";
+}
+
+window.onload = function(){
+  showSection("school"); // إظهار المدرسة أولاً عند تحميل الموقع
+}
+
+function updateClass(){
+  let selected = document.getElementById("class-selector").value;
+  let classes = ["4","5","6","7","8","9","10"];
+  classes.forEach(c=>{
+    document.getElementById("students-"+c).style.display="none";
+    document.getElementById("teachers-"+c).style.display="none";
+    document.getElementById("classes-"+c).style.display="none";
+  });
+  if(selected){
+    document.getElementById("students-"+selected).style.display="block";
+    document.getElementById("teachers-"+selected).style.display="block";
+    document.getElementById("classes-"+selected).style.display="block";
+  }
+}
+
+function askAI(){
+  let q = document.getElementById("question").value.toLowerCase();
+  let response = "سيتم ربط الذكاء الاصطناعي لاحقًا للإجابة عن: " + q;
+  document.getElementById("ai-response").innerText = response;
+}
+
+function sendFeedback(){
+  let text = document.getElementById("feedback-text").value;
+  if(text.trim()!=""){
+    document.getElementById("feedback-response").innerText="تم إرسال البلاغ بنجاح!";
+    document.getElementById("feedback-text").value="";
+  }else{
+    document.getElementById("feedback-response").innerText="يرجى كتابة البلاغ أولاً.";
+  }
+}
+</script>
+
+</body>
+</html>
