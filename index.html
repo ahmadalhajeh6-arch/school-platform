@@ -1,0 +1,75 @@
+<div class="card" id="select-class">
+<h2>اختر الفصل</h2>
+<select id="class-selector" onchange="updateClass()">
+  <option value="">-- اختر الصف --</option>
+  <option value="4">الصف الرابع</option>
+  <option value="5">الصف الخامس</option>
+  <option value="6">الصف السادس</option>
+  <option value="7">الصف السابع</option>
+  <option value="8">الصف الثامن</option>
+  <option value="9">الصف التاسع</option>
+  <option value="10">الصف العاشر</option>
+</select>
+</div>
+<!-- الصف الرابع -->
+<div class="card" id="students-4" style="display:none;">
+<h2>الطلاب المتفوقون - الصف الرابع</h2>
+<p>سيتم إضافة أسماء الطلاب لاحقًا</p>
+</div>
+<div class="card" id="teachers-4" style="display:none;">
+<h2>كادر الصف الرابع</h2>
+<p>سيتم إضافة المعلمين لاحقًا</p>
+</div>
+<div class="card" id="classes-4" style="display:none;">
+<h2>جدول الصف الرابع</h2>
+<p>سيتم إضافة الجدول لاحقًا</p>
+</div>
+
+<!-- الصف الخامس -->
+<div class="card" id="students-5" style="display:none;">
+<h2>الطلاب المتفوقون - الصف الخامس</h2>
+<p>سيتم إضافة أسماء الطلاب لاحقًا</p>
+</div>
+<div class="card" id="teachers-5" style="display:none;">
+<h2>كادر الصف الخامس</h2>
+<p>سيتم إضافة المعلمين لاحقًا</p>
+</div>
+<div class="card" id="classes-5" style="display:none;">
+<h2>جدول الصف الخامس</h2>
+<p>سيتم إضافة الجدول لاحقًا</p>
+</div>
+
+<!-- الصف السادس -->
+<div class="card" id="students-6" style="display:none;">
+<h2>الطلاب المتفوقون - الصف السادس</h2>
+<p>سيتم إضافة أسماء الطلاب لاحقًا</p>
+</div>
+<div class="card" id="teachers-6" style="display:none;">
+<h2>كادر الصف السادس</h2>
+<p>سيتم إضافة المعلمين لاحقًا</p>
+</div>
+<div class="card" id="classes-6" style="display:none;">
+<h2>جدول الصف السادس</h2>
+<p>سيتم إضافة الجدول لاحقًا</p>
+</div>
+function updateClass(){
+  let selected = document.getElementById("class-selector").value;
+  
+  // اخفاء كل الطلاب والمعلمين والجداول
+  let classes = ["4","5","6","7","8","9","10"];
+  classes.forEach(c=>{
+    document.getElementById("students-"+c).style.display="none";
+    document.getElementById("teachers-"+c).style.display="none";
+    document.getElementById("classes-"+c).style.display="none";
+  });
+
+  // اظهار المختار
+  if(selected){
+    document.getElementById("students-"+selected).style.display="block";
+    document.getElementById("teachers-"+selected).style.display="block";
+    document.getElementById("classes-"+selected).style.display="block";}}
+function askAI(){
+  let q = document.getElementById("question").value.toLowerCase();
+  let response = "سيتم ربط الذكاء الاصطناعي لاحقًا للإجابة عن: " + q;
+  document.getElementById("ai-response").innerText = response;
+}
